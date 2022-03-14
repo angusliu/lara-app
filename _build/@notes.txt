@@ -94,3 +94,13 @@ http://your-host:port/admin
 # php artisan db:seed --class=AdminTablesSeeder
 php artisan admin:export-seed
 
+#----------------------------------------------------------------------
+
+Five most important commands if your Laravel is not working as expected after some modifications in .env or database folder or because of any other modifications. Here is full explanation: https://www.youtube.com/watch?v=Q1ynDMC8UGg
+
+php artisan config:clear
+php artisan cache:clear
+composer dump-autoload
+php artisan view:clear
+php artisan route:clear
+
