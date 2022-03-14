@@ -16,7 +16,13 @@ if ( !is_array($cfg) ) die ("Cannot find '$env' configuration object in '{$cfg_f
 
 // read and backup .env
 $env_contents = file_get_contents(LARAVEL_ENV_FILE);
-$env_backup_file = "./" . hrtime(true) . ".env.bak";
+$env_backup_file = "/tmp/laravel-" . hrtime(true) . ".env.bak";
+
+echo
+<<<EOD
+Backup original '.env' to '$env_backup_file'.\n
+EOD;
+file_put_contents($env_backup_file, $env_contents);
 
 // set .env accordingly
 echo
@@ -24,7 +30,6 @@ echo
 Rewrite Laravel '.env' for DB settings...\n
 EOD;
 
-file_put_contents($env_backup_file, $env_contents);
 foreach($cfg as $key => $val) {
     $env_contents = preg_replace("/^(\s*$key\s*=)(.*)$/m", "$key=$val", $env_contents); // set modifier to multiline for using ^$
 }
