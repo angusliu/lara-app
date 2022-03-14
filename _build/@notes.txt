@@ -83,7 +83,14 @@ http://your-host:port/admin
 # for first AdminController
 # 2. add route
 # added following in <project-root>/app/Admin/route.php
-#	$router->resource('demo/users', UserController::class);
+#	$router->resource('site/user', UserController::class);
 # 3. add menu
-# now, you have a User management page in laravel-admin UI
+# now, you have a User management page in laravel-admin UI (uri must match given in route.php)
+
+#----------------------------------------------------------------------
+
+## use `admin:export-seed` to generate DB seeder @ /database/seeders/AdminTablesSeeder.php,
+# admin menu, role, permission in DB can be restored by
+# php artisan db:seed --class=AdminTablesSeeder
+php artisan admin:export-seed
 
