@@ -13,4 +13,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
+    // demo route
+    $router->resource('/site/user', UserController::class); // AdminController for Model(App\Models\User)
 });
