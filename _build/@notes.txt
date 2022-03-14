@@ -1,0 +1,89 @@
+
+## github new repository
+SSH: git@github.com:angusliu/lara-app.git
+
+…or create a new repository on the command line
+echo "# lara-app" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:angusliu/lara-app.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:angusliu/lara-app.git
+git branch -M main
+git push -u origin main
+
+## create project
+# composer create-project laravel/laravel=8.* lara-app --prefer-dist # without git init or
+# laravel new lara-app --git --branch="main" # with git. Must have `laravel` in paths
+laravel new lara-app --git
+
+#----------------------------------------------------------------------
+
+## git repo initialization
+# set `origin` to the remote git repo
+git remote add origin git@github.com:angusliu/lara-app.git
+# add first/init commit
+git commit -m '[init]'
+# create branch
+git branch -M main
+# push branch main:main to the remote git repo
+git push -u origin main
+
+#----------------------------------------------------------------------
+
+## start server
+# more info: php artisan help serve
+# before running up, the following commands can help to clear config and cache
+# php artisan config:clear
+# php artisan cache:clear
+php artisan serve --host=0.0.0.0 --port=8888
+
+#----------------------------------------------------------------------
+
+## run server in background
+# use command `ps ux` to list pids and stop server by `kill -15 <pid of server.php>
+php artisan serve --host=0.0.0.0 --port=8888 > server.log &
+
+#----------------------------------------------------------------------
+
+## build scripts
+#
+- cd <laravel-root> && composer create-project;
+	same as:
+	- cp .env.example .env
+	- composer install
+	- php artisan key:generate --ansi
+- init laravel db
+- php artisan migrate
+- php artisan db:seed (optional)
+
+#----------------------------------------------------------------------
+
+# install laravel-admin:
+composer require encore/laravel-admin
+
+php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+
+php artisan admin:install
+
+php artisan serve --host=0.0.0.0 --port=9999
+
+http://your-host:port/admin
+
+# default acc/pwd:admin/admin
+
+# see https://laravel-admin.org/docs/en/quick-start for a jump start
+# 1. make Controller
+# php artisan admin:make UserController --model=App\\Models\\User (Linux)
+# php artisan admin:make UserController --model=App\Models\User (Windows)
+# for first AdminController
+# 2. add route
+# added following in <project-root>/app/Admin/route.php
+#	$router->resource('demo/users', UserController::class);
+# 3. add menu
+# now, you have a User management page in laravel-admin UI
+
