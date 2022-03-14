@@ -4,6 +4,7 @@ $cmd_lines = <<<EOD
 cd ../ && composer require encore/laravel-admin
 cd ../ && php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
 cd ../ && php artisan admin:install
+cd ../ && php artisan db:seed --class=AdminTablesSeeder
 EOD;
 
 $cmds = explode("\n", $cmd_lines);
