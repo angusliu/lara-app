@@ -1,44 +1,31 @@
 #!/usr/bin/env php
 <?php
-define('LARAVEL_ENV_FILE', '../.env');
+require_once("../vendor/autoload.php");
 
-$env = isset($argv[1])? $argv[1] // set first argument as environment
+define('LARAVEL_ROOT', realpath('../'));
+
+$environment = isset($argv[1])? $argv[1] // set first argument as environment
     : 'local'; // or use default environment
-$cfg_file = "conf/$env.php";
-echo 
+
+$cmd = "./set_env.php $environment";
+echo "Command: $cmd\n";
+system($cmd, $ret);
+echo "Result: $ret\n";
+
+// if set LARAVEL_ROOT/.env from configuration failed, halt!
+if ( $ret )
+    exit($ret);
+
+// load LARAVEL_ROOT/.env as an array
+$env = Dotenv\Dotenv::createArrayBacked(LARAVEL_ROOT)->load();
+if ( !is_array($env) )
+    fwrite(STDERR, "Cannot find environment object in folder '" . LARAVEL_ROOT . "'!\n") && exit(-1);
+
+$cmd_lines =
 <<<EOD
-Environment: $env
-Configuration: $cfg_file\n
-EOD;
-
-include_once($cfg_file);
-if ( !is_array($cfg) ) die ("Cannot find '$env' configuration object in '{$cfg_file}'!\n");
-
-// read and backup .env
-$env_contents = file_get_contents(LARAVEL_ENV_FILE);
-$env_backup_file = "/tmp/laravel-" . hrtime(true) . ".env.bak";
-
-echo
-<<<EOD
-Backup original '.env' to '$env_backup_file'.\n
-EOD;
-file_put_contents($env_backup_file, $env_contents);
-
-// set .env accordingly
-echo
-<<<EOD
-Rewrite Laravel '.env' for DB settings...\n
-EOD;
-
-foreach($cfg as $key => $val) {
-    $env_contents = preg_replace("/^(\s*$key\s*=)(.*)$/m", "$key=$val", $env_contents); // set modifier to multiline for using ^$
-}
-file_put_contents(LARAVEL_ENV_FILE, $env_contents);
-
-$cmd_lines = <<<EOD
-sudo mysql -u root -e 'CREATE USER IF NOT EXISTS `{$cfg['DB_USERNAME']}`@`{$cfg['DB_HOST']}` IDENTIFIED BY "{$cfg['DB_PASSWORD']}";'
-sudo mysql -u root -e 'CREATE DATABASE IF NOT EXISTS `{$cfg['DB_DATABASE']}`;'
-sudo mysql -u root -e 'GRANT ALL PRIVILEGES ON `{$cfg['DB_DATABASE']}`.* TO `{$cfg['DB_USERNAME']}`@`{$cfg['DB_HOST']}`;'
+sudo mysql -u root -e 'CREATE USER IF NOT EXISTS `{$env['DB_USERNAME']}`@`{$env['DB_HOST']}` IDENTIFIED BY "{$env['DB_PASSWORD']}";'
+sudo mysql -u root -e 'CREATE DATABASE IF NOT EXISTS `{$env['DB_DATABASE']}`;'
+sudo mysql -u root -e 'GRANT ALL PRIVILEGES ON `{$env['DB_DATABASE']}`.* TO `{$env['DB_USERNAME']}`@`{$env['DB_HOST']}`;'
 sudo mysql -u root -e 'FLUSH PRIVILEGES;'
 cd ../ && php artisan migrate 
 cd ../ && php artisan db:seed
