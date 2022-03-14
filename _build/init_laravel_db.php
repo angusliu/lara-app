@@ -19,6 +19,7 @@ sudo mysql -u root -e 'CREATE USER IF NOT EXISTS `{$cfg['DB_USERNAME']}`@`{$cfg[
 sudo mysql -u root -e 'CREATE DATABASE IF NOT EXISTS `{$cfg['DB_DATABASE']}`;'
 sudo mysql -u root -e 'GRANT ALL PRIVILEGES ON `{$cfg['DB_DATABASE']}`.* TO `{$cfg['DB_USERNAME']}`@`{$cfg['DB_HOST']}`;'
 sudo mysql -u root -e 'FLUSH PRIVILEGES;'
+cd ../ && php artisan migrate && php artisan db:seed
 EOD;
 
 /*
