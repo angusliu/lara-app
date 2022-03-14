@@ -14,6 +14,22 @@ EOD;
 include_once($cfg_file);
 if ( !is_array($cfg) ) die ("Cannot find '$env' configuration object in '{$cfg_file}'!\n");
 
+// read and backup .env
+$env_contents = file_get_contents(LARAVEL_ENV_FILE);
+$env_backup_file = "./" . hrtime(true) . ".env.bak";
+
+// set .env accordingly
+echo
+<<<EOD
+Rewrite Laravel '.env' for DB settings...\n
+EOD;
+
+file_put_contents($env_backup_file, $env_contents);
+foreach($cfg as $key => $val) {
+    $env_contents = preg_replace("/^(\s*$key\s*=)(.*)$/m", "$key=$val", $env_contents); // set modifier to multiline for using ^$
+}
+file_put_contents(LARAVEL_ENV_FILE, $env_contents);
+
 $cmd_lines = <<<EOD
 sudo mysql -u root -e 'CREATE USER IF NOT EXISTS `{$cfg['DB_USERNAME']}`@`{$cfg['DB_HOST']}` IDENTIFIED BY "{$cfg['DB_PASSWORD']}";'
 sudo mysql -u root -e 'CREATE DATABASE IF NOT EXISTS `{$cfg['DB_DATABASE']}`;'
@@ -35,22 +51,3 @@ foreach($cmds as $cmd) {
 
     if ( $ret ) break;
 }
-
-// read and backup .env
-$env_contents = file_get_contents(LARAVEL_ENV_FILE);
-$env_backup_file = "./" . hrtime(true) . ".env.bak";
-
-// set .env accordingly
-echo
-<<<EOD
-Rewrite Laravel '.env' for DB settings...\n
-EOD;
-
-file_put_contents($env_backup_file, $env_contents);
-foreach($cfg as $key => $val) {
-    $env_contents = preg_replace("/^(\s*$key\s*=)(.*)$/m", "$key=$val", $env_contents); // set modifier to multiline for using ^$
-}
-file_put_contents(LARAVEL_ENV_FILE, $env_contents);
-
-
-
