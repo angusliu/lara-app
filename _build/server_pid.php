@@ -5,6 +5,7 @@ define('LARAVEL_ROOT', realpath('../'));
 $server_php_file = LARAVEL_ROOT . DIRECTORY_SEPARATOR . 'server.php';
 $server_pid_file = realpath('./temp') . DIRECTORY_SEPARATOR . 'server.pid';
 
+// use `ps ax` to show all processes (a: all of tty processes, ax: all of tty and non-tty processes)
 $cmd =
 <<<EOD
 ps ax | grep $server_php_file | grep -v grep
