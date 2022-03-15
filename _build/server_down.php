@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
-define('LARAVEL_ROOT', realpath('../'));
+define('LARAVEL_ROOT', realpath(__DIR__ . '/../'));
 
-$server_php_file = LARAVEL_ROOT . DIRECTORY_SEPARATOR . 'server.php';
-$server_pid_file = realpath('./temp') . DIRECTORY_SEPARATOR . 'server.pid';
+$server_pid_file = __DIR__ . '/server.pid';
+$server_php_file = LARAVEL_ROOT . '/server.php';
 
 $pid = 0;
 $kill_signal = 'TERM'; // equals 15 or 'KILL' equals 9 for process termination

@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
-define('LARAVEL_ROOT', realpath('../'));
+define('LARAVEL_ROOT', realpath(__DIR__ . '/../'));
 
-$server_php_file = LARAVEL_ROOT . DIRECTORY_SEPARATOR . 'server.php';
-$server_pid_file = realpath('./temp') . DIRECTORY_SEPARATOR . 'server.pid';
+$server_pid_file = __DIR__ . '/server.pid';
+$server_php_file = LARAVEL_ROOT . '/server.php';
 
 // use `ps ax` to show all processes (a: all of tty processes, ax: all of tty and non-tty processes)
 $cmd =

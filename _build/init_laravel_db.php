@@ -1,13 +1,13 @@
 #!/usr/bin/env php
 <?php
-require_once("../vendor/autoload.php");
+require_once(__DIR__ . '/../vendor/autoload.php');
 
-define('LARAVEL_ROOT', realpath('../'));
+define('LARAVEL_ROOT', realpath(__DIR__ . '/../'));
 
 $environment = isset($argv[1])? $argv[1] // set first argument as environment
     : 'local'; // or use default environment
 
-$cmd = "./set_env.php $environment";
+$cmd = __DIR__ . "/set_env.php $environment";
 echo "Command: $cmd\n";
 system($cmd, $ret);
 echo "Result: $ret\n";
@@ -21,14 +21,15 @@ $env = Dotenv\Dotenv::createArrayBacked(LARAVEL_ROOT)->load();
 if ( !is_array($env) )
     fwrite(STDERR, "Cannot find environment object in folder '" . LARAVEL_ROOT . "'!\n") && exit(-1);
 
+$laravel_root = LARAVEL_ROOT;
 $cmd_lines =
 <<<EOD
 sudo mysql -u root -e 'CREATE USER IF NOT EXISTS `{$env['DB_USERNAME']}`@`{$env['DB_HOST']}` IDENTIFIED BY "{$env['DB_PASSWORD']}";'
 sudo mysql -u root -e 'CREATE DATABASE IF NOT EXISTS `{$env['DB_DATABASE']}`;'
 sudo mysql -u root -e 'GRANT ALL PRIVILEGES ON `{$env['DB_DATABASE']}`.* TO `{$env['DB_USERNAME']}`@`{$env['DB_HOST']}`;'
 sudo mysql -u root -e 'FLUSH PRIVILEGES;'
-cd ../ && php artisan migrate 
-cd ../ && php artisan db:seed
+cd $laravel_root && php artisan migrate 
+cd $laravel_root && php artisan db:seed
 EOD;
 
 /*
