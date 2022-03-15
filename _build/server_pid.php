@@ -7,7 +7,7 @@ $server_pid_file = realpath('./temp') . DIRECTORY_SEPARATOR . 'server.pid';
 
 $cmd =
 <<<EOD
-ps a | grep $server_php_file | grep -v grep
+ps ax | grep $server_php_file | grep -v grep
 EOD;
 
 // calculate timeout ourselves, because set_time_limit() or ini_set('max_execution_time', $sec)
