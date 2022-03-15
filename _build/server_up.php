@@ -1,15 +1,15 @@
 #!/usr/bin/env php
 <?php
-require_once("../vendor/autoload.php");
+require_once(__DIR__ . '/../vendor/autoload.php');
 
-define('LARAVEL_ROOT', realpath('../'));
+define('LARAVEL_ROOT', realpath(__DIR__ . '/../'));
 
 $server_host = '0.0.0.0'; // default hostname or address
 $server_port = 8000; // default port
 $server_desc = 'default';
-$server_log_file = LARAVEL_ROOT . DIRECTORY_SEPARATOR . 'server.log';
-$server_php_file = LARAVEL_ROOT . DIRECTORY_SEPARATOR . 'server.php';
-$server_pid_file = realpath('./temp') . DIRECTORY_SEPARATOR . 'server.pid';
+$server_pid_file = __DIR__ . '/server.pid';
+$server_log_file = __DIR__ . '/server.log';
+$server_php_file = LARAVEL_ROOT . '/server.php';
 
 $pid = 0;
 
@@ -34,18 +34,16 @@ if ( $app_url && preg_match('/.*:(\d+)/', $app_url, $matches) ) {
 }
 
 // start server with nohup in the background, ignore errors
+$laravel_root = LARAVEL_ROOT;
 $cmd =
 <<<EOD
-cd ../ && nohup php artisan serve --host={$server_host} --port={$server_port} > {$server_log_file} 2>&1 &
+cd $laravel_root && nohup php artisan serve --host={$server_host} --port={$server_port} > {$server_log_file} 2>&1 &
 EOD;
 
 system($cmd, $ret);
 
 // get server PID
-$cmd =
-<<<EOD
-./server_pid.php
-EOD;
+$cmd = __DIR__ . '/server_pid.php';
 
 $pid = 0;
 exec($cmd, $out, $ret);

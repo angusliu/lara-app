@@ -2,7 +2,7 @@
 <?php
 error_reporting(E_ERROR);
 
-define('LARAVEL_ENV_FILE', '../.env');
+define('LARAVEL_ENV_FILE', __DIR__ . '/../.env');
 
 $environment = isset($argv[1])? $argv[1] // set first argument as environment
     : 'local'; // or use default environment
