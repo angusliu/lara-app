@@ -4,19 +4,23 @@ error_reporting(E_ERROR);
 
 define('LARAVEL_ENV_FILE', __DIR__ . '/../.env');
 
-$environment = isset($argv[1])? $argv[1] // set first argument as environment
-    : 'local'; // or use default environment
+// set first argument as environment
+$environment = isset($argv[1])?$argv[1]:NULL;
+if ( !$environment ) {
+    $script_name = basename($argv[0]);
+    fwrite(STDERR, "Usage: $script_name <env_config> e.g. $script_name local\n") && exit(-1);
+}
+
 $cfg_file = "conf/{$environment}.php";
+include_once($cfg_file);
+if ( !is_array($cfg) )
+    fwrite(STDERR, "Cannot find '$environment' configuration object in '{$cfg_file}'!\n") && exit(-1);
 
 echo 
 <<<EOD
 Environment: $environment
 Configuration: $cfg_file\n
 EOD;
-
-include_once($cfg_file);
-if ( !is_array($cfg) )
-    fwrite(STDERR, "Cannot find '$environment' configuration object in '{$cfg_file}'!\n") && exit(-1);
 
 // read and backup .env
 $env_contents = file_get_contents(LARAVEL_ENV_FILE);
