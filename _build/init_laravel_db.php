@@ -4,9 +4,14 @@ require_once(__DIR__ . '/../vendor/autoload.php');
 
 define('LARAVEL_ROOT', realpath(__DIR__ . '/../'));
 
-$environment = isset($argv[1])? $argv[1] // set first argument as environment
-    : 'local'; // or use default environment
+// set first argument as environment
+$environment = isset($argv[1])?$argv[1]:NULL;
+if ( !$environment ) {
+    $script_name = basename($argv[0]);
+    fwrite(STDERR, "Usage: $script_name <env_config> e.g. $script_name local\n") && exit(-1);
+}
 
+// call external script to setup LARAVEL_ROOT/.env
 $cmd = __DIR__ . "/set_env.php $environment";
 echo "Command: $cmd\n";
 system($cmd, $ret);
