@@ -1,0 +1,20 @@
+
+### where to put script tags in html
+https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup
+
+# The old approach to solving this problem was to put <script> tags at the bottom of your <body>, because this ensures the parser isn't blocked until the very end.
+
+<!-- put scripts or anything required DOM to be loaded right before the end of body tag -->
+<script src="path/to/script.js"></script>
+</body>
+</html>
+
+# modern use
+sequential:
+<script src="path/to/script.js" defer></script>
+
+async (unordered):
+<script src="path/to/script.js" async></script>
+
+
+

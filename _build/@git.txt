@@ -1,0 +1,7 @@
+﻿
+# setup global editor to "vim"
+git config --global core.editor "vim"
+
+# merge commits after push
+git rebase -i <commit>
+git push --force-with-lease
