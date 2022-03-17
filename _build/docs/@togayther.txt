@@ -141,6 +141,29 @@ https://packagist.org/
 
 #----------------------------------------------------------------------
 
+
+---
+
+DB coupon:
+
+table.users: 含使用者現有點數
+table.points: 點數管理規則 #rule
+table.user_point: 依點數獲得規則產生的點數 #event
+table.user_coupons: 使用者已兌換的優惠券
+table.coupons: 建立的優惠券 (含發行總張數/已兌換/已使用)
+table.coupon_types: 優惠券分類 #category
+table.stores: 店家資訊
+
+## Issue: relational DB with open schema
+google://database design for arbitrary attribute
+google://Entity–attribute–value vs JSON performance
+google://MySQL native JSON support
+https://devs.tw/post/53
+https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
+
+
+---
+
 /*
 tech:
 - nginx/mysql/laravel/docker/git 配置文件及環境設定 (e.g ssl cert/key, CA, .env, database settings, git)
