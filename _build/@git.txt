@@ -5,3 +5,17 @@ git config --global core.editor "vim"
 # merge commits after push
 git rebase -i <commit>
 git push --force-with-lease
+
+# issue
+remote: Internal Server Error
+To github.com:angusliu/lara-app.git
+ ! [remote rejected] main -> main (Internal Server Error)
+error: failed to push some refs to 'git@github.com:angusliu/lara-app.git'
+
+Ref:
+https://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to-remote
+```
+git pull --rebase origin main
+git push origin main
+```
+
