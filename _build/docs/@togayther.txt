@@ -161,6 +161,13 @@ google://MySQL native JSON support
 https://devs.tw/post/53
 https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 
+## Issue: laravel mysql index on JSON column
+google://laravel index json column
+https://blog.fortrabbit.com/mysql-json-column-with-laravel
+https://medium.com/@michalisantoniou6/massive-performance-gains-on-json-column-queries-using-mysql-virtual-columns-and-indexes-in-laravel-dc7d289a41b3
+
+# Issue: mysql JSON column naming
+many people use 'meta' as JSON field name.
 
 ---
 
