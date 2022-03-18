@@ -11,6 +11,7 @@ $laravel_root = LARAVEL_ROOT;
 $cmd =
 <<<EOD
 cd $laravel_root && composer create-project
+cd $laravel_root && npm ci
 EOD;
 
 echo "Command: $cmd\n";
