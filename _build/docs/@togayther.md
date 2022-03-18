@@ -1,25 +1,29 @@
-﻿### 開發環境：
-OS - Ubuntu 20.04
-Web Server - NGINX
-Database - MySQL 8.0.27
-Language - PHP 7.4
-Framework - Laravel 8.34
+﻿# 開發環境：
 
-Production:
-https://togayther.com/
+- OS - Ubuntu 20.04
+- Web Server - NGINX
+- Database - MySQL 8.0.27
+- Language - PHP 7.4  
+- Framework - Laravel 8.34
 
-Source Code:
-https://drive.google.com/file/d/1ngNxZQBETgbNnuObZpsEpmXMeaBYnjNs/view?usp=sharing
+## Production:
+<https://togayther.com/>
 
+## Source code:
+<https://bitbucket.org/RodneyTang/togayther/src/master/>
 
-# source code:
-# https://bitbucket.org/RodneyTang/togayther/src/master/
-# git clone via SSH:
-git clone git@bitbucket.org:RodneyTang/togayther.git
+## git clone via SSH:
+```
+git clone git@bitbucket.org:RodneyTang/togayther.git 
+```
 
-# git clone via HTTPS:
+## git clone via HTTPS:
+```
 git clone https://AngusLiu1975@bitbucket.org/RodneyTang/togayther.git
+```
 
+## Installation:
+```
 cd <laravel-project-root>
 composer install
 cp .env.example .env
@@ -43,11 +47,11 @@ DB_PASSWORD=
 # comment Laravel\Scout\Searchable traits in <project-root>/app/Models/Post.php to avoid connecting to Algolia for full-text search
 #    //use DefaultDatetimeFormat, Searchable;
 #    use DefaultDatetimeFormat;
+```
 
-#---------------------------------------------------------
+# install from clean ubuntu-live-server.iso:
 
-# install ubuntu-live-server.iso
-
+```
 #
 sudo apt-get install -y aptitude
 
@@ -101,10 +105,12 @@ composer create-project laravel/laravel=8.5.* web-app --prefer-dist
 # php artisan config:clear
 # php artisan cache:clear
 php artisan serve --host=0.0.0.0 --port=8888
+```
 
-#----------------------------------------------------------------------
 
 # install laravel-admin:
+
+```
 composer require encore/laravel-admin
 
 php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
@@ -127,52 +133,53 @@ http://your-host:port/admin
 #	$router->resource('demo/users', UserController::class);
 # 3. add menu
 # now, you have a User management page in laravel-admin UI
+```
 
-#----------------------------------------------------------------------
 # Resources:
 
-# upgrade composer:
+## upgrade composer:
+```
 curl -sS https://getcomposer.org/installer | php
-# execute composer by
+```
+## execute composer by:
+```
 ./composer.phar -V
-
-# search PHP packages:
-https://packagist.org/
-
-#----------------------------------------------------------------------
+```
+## search PHP packages:
+<https://packagist.org/>
 
 
----
+# Notes:
 
-DB coupon:
+## DB coupon:
 
-table.users: 含使用者現有點數
-table.points: 點數管理規則 #rule
-table.user_point: 依點數獲得規則產生的點數 #event
-table.user_coupons: 使用者已兌換的優惠券
-table.coupons: 建立的優惠券 (含發行總張數/已兌換/已使用)
-table.coupon_types: 優惠券分類 #category
-table.stores: 店家資訊
+- table.users: 含使用者現有點數  
+- table.points: 點數管理規則 #rule  
+- table.user_point: 依點數獲得規則產生的點數 #event  
+- table.user_coupons: 使用者已兌換的優惠券  
+- table.coupons: 建立的優惠券 (含發行總張數/已兌換/已使用)  
+- table.coupon_types: 優惠券分類 #category  
+- table.stores: 店家資訊  
 
 ## Issue: relational DB with open schema
-google://database design for arbitrary attribute
-google://Entity–attribute–value vs JSON performance
-google://MySQL native JSON support
-https://devs.tw/post/53
+
+google://database design for arbitrary attribute  
+google://Entity–attribute–value vs JSON performance  
+google://MySQL native JSON support  
+https://devs.tw/post/53  
 https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 
 ## Issue: laravel mysql index on JSON column
-google://laravel index json column
-https://blog.fortrabbit.com/mysql-json-column-with-laravel
+google://laravel index json column  
+https://blog.fortrabbit.com/mysql-json-column-with-laravel  
 https://medium.com/@michalisantoniou6/massive-performance-gains-on-json-column-queries-using-mysql-virtual-columns-and-indexes-in-laravel-dc7d289a41b3
 
-# Issue: mysql JSON column naming
+## Issue: mysql JSON column naming
 many people use 'meta' as JSON field name.
 
----
+# Others:
 
-/*
-tech:
+## tech:
 - nginx/mysql/laravel/docker/git 配置文件及環境設定 (e.g ssl cert/key, CA, .env, database settings, git)
 - build scripts (js/css minifier or obfuscator)
 - deploy scripts
@@ -181,22 +188,16 @@ tech:
 - web test account (e.g 使用者/管理者帳號 可供測試功能)
 	usr/pwd:ttliu5888@gmail.com/5tgb%TGB
 	adm/pwd:taliu5888@gmail.com/togayther
-
-production:
-https://togayther.com/admin
-Acc : taliu5888@gmail.com
-Psw : togayther
-
-dev:
+## production:
+https://togayther.com/admin  
+acc: taliu5888@gmail.com  
+pwd: togayther  
+## dev:
 https://139.162.84.198/
-
 - git repo
-
-prod:
+## prod:
 - function completed
 - how it is used by most users
+## spec/驗收:
 
-spec/驗收
-
-//*/
 
