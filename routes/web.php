@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::view('/ex/pusher-client', 'examples/pusher-client');
+Route::view('/ex/pusher-server', 'examples/pusher-server');
