@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::view('/ex/pusher-client', 'examples/pusher-client');
 Route::view('/ex/pusher-server', 'examples/pusher-server');
+Route::view('/ex/elem-in-viewport', 'examples/elem-in-viewport');
