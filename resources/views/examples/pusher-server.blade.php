@@ -10,7 +10,7 @@
 
 /*
 // send event via php
-require base_path() . '/vendor/autoload.php';
+require_once base_path() . '/vendor/autoload.php';
 
 $options = array(
   'cluster' => 'ap3',
