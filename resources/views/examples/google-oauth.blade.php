@@ -13,7 +13,7 @@
 require_once base_path() . '/vendor/autoload.php';
 
 $client = new Google\Client();
-$client->setAuthConfig(config_path('google_client_secret.json'));
+$client->setAuthConfig(config_path('google_client_secret.nogit.json'));
 
 if (isset($_GET['code'])) {
     echo '<pre>';
@@ -25,25 +25,39 @@ if (isset($_GET['code'])) {
     $service = new Google_Service_Oauth2($client);
     $user_info = $service->userinfo->get();
     print_r($user_info);
+
+    // query strings
+    print_r($_GET);
     
     echo '</pre>';
 }
 
 // Your redirect URI can be any registered URI, but in this example
 // we redirect back to this same page
-// e.g. $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-$redirect_uri = 'http://' . '1.88.angusliu.com:9999' . $_SERVER['PHP_SELF']; // cannot use private IP
+// e.g. $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+// $redirect_uri cannot use private IP, and must match settings in google api console
+$redirect_uri = 'http://' . "1.88.angusliu.com:9999" . $_SERVER['PATH_INFO'];
 $client->setRedirectUri($redirect_uri);
-$client->setState('my_state'); // store simple store e.g. redirect path?
+$client->setState($_SERVER['REQUEST_URI']); // store simple store e.g. redirect path?
 
 $client->addScope('https://www.googleapis.com/auth/userinfo.email');
 $client->addScope('https://www.googleapis.com/auth/userinfo.profile');
 
 $authUrl = $client->createAuthUrl();
 
-echo "<h3>AuthURL: $authUrl</h3>";
-
 @endphp
     <button onclick="window.location.href='{{ $authUrl }}'">Google Login</button>
+@php
+
+echo "<h3>AuthURL: $authUrl</h3>";
+
+/*
+echo '<pre>';
+print_r($_SERVER);
+echo '</pre>';
+//*/
+
+@endphp
     </body>
 </html>
