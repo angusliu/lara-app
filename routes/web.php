@@ -24,3 +24,5 @@ Route::view('/ex/pusher-server', 'examples/pusher-server');
 Route::view('/ex/elem-in-viewport', 'examples/elem-in-viewport');
 // 2022-04-21
 Route::view('/ex/google-oauth', 'examples/google-oauth');
+// 2022-04-22
+Route::view('/ex/facebook-oauth', 'examples/facebook-oauth');
