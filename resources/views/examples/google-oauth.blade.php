@@ -18,13 +18,16 @@ $client->setAuthConfig(config_path('google_client_secret.nogit.json'));
 if (isset($_GET['code'])) {
     echo '<pre>';
 
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']); //$token = $client->authenticate($_GET['code']);
+    //$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    $token = $client->authenticate($_GET['code']);
     print_r($token);
 
+    ///*
     // use service object to obtain user's email and info
     $service = new Google_Service_Oauth2($client);
     $user_info = $service->userinfo->get();
     print_r($user_info);
+    //*/
 
     // query strings
     print_r($_GET);
@@ -38,6 +41,7 @@ if (isset($_GET['code'])) {
 
 // $redirect_uri cannot use private IP, and must match settings in google api console
 $redirect_uri = 'http://' . "1.88.angusliu.com:9999" . $_SERVER['PATH_INFO'];
+//$redirect_uri = $_SERVER['APP_URL'] . $_SERVER['PATH_INFO'];
 $client->setRedirectUri($redirect_uri);
 $client->setState($_SERVER['REQUEST_URI']); // store simple store e.g. redirect path?
 
@@ -51,6 +55,7 @@ $authUrl = $client->createAuthUrl();
 @php
 
 echo "<h3>AuthURL: $authUrl</h3>";
+echo "<h3>redirectURL: $redirect_uri</h3>";
 
 /*
 echo '<pre>';
