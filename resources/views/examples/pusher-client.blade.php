@@ -8,7 +8,7 @@
         <title>Lara-App</title>
     </head>
     <body>
-    Pusher Example with Javascript
+    <h1>Pusher Client with Javascript</h1>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
 
