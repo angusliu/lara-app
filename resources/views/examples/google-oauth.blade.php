@@ -40,10 +40,10 @@ if (isset($_GET['code'])) {
 // e.g. $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 // $redirect_uri cannot use private IP, and must match settings in google api console
-$redirect_uri = 'http://' . "1.88.angusliu.com:9999" . $_SERVER['PATH_INFO'];
-//$redirect_uri = $_SERVER['APP_URL'] . $_SERVER['PATH_INFO'];
+$redirect_uri = 'http://' . "1.88.angusliu.com:9999" . $_SERVER['REQUEST_URI'];
+$redirect_uri = $_SERVER['APP_URL'] . $_SERVER['REQUEST_URI'];
 $client->setRedirectUri($redirect_uri);
-$client->setState($_SERVER['REQUEST_URI']); // store simple store e.g. redirect path?
+$client->setState($_SERVER['REQUEST_URI']); // store simple value e.g. redirect path?
 
 $client->addScope('https://www.googleapis.com/auth/userinfo.email');
 $client->addScope('https://www.googleapis.com/auth/userinfo.profile');
@@ -57,7 +57,7 @@ $authUrl = $client->createAuthUrl();
 echo "<h3>AuthURL: $authUrl</h3>";
 echo "<h3>redirectURL: $redirect_uri</h3>";
 
-/*
+///*
 echo '<pre>';
 print_r($_SERVER);
 echo '</pre>';
