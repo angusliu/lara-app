@@ -29,5 +29,8 @@ Route::view('/ex/google-oauth', 'examples/google-oauth');
 // 2022-04-22
 Route::view('/ex/facebook-oauth', 'examples/facebook-oauth');
 // 2022-05-02
-Route::get('/login/facebook', [LoginController::class, 'fbLogin'])->name('/login/facebook');
-Route::get('/login/facebook/callback', [LoginController::class, 'fbLoginCallback'])->name('/login/facebook/callback');
+Route::get('/login/facebook', [LoginController::class, 'facebookLogin']);
+Route::get('/login/facebook/callback', [LoginController::class, 'facebookLoginCallback']);
+// 2022-05-03
+Route::get('/login/google', [LoginController::class, 'googleLogin']);
+Route::get('/login/google/callback', [LoginController::class, 'googleLoginCallback']);

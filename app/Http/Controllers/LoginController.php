@@ -12,20 +12,35 @@ class LoginController extends Controller
 {
     //
 
-    public function fbLogin()
+    public function facebookLogin()
     {
         $redirect = Socialite::driver('facebook')->redirect();
 
         return $redirect;
     }
 
-    public function fbLoginCallback()
+    public function facebookLoginCallback()
     {
         $user = Socialite::driver('facebook')->user();
 
-        echo '<pre>';
-        var_dump($user);
-        echo '</pre>';
+        dd($user); // laravel dumper
+
+        // if ok, redirect to main page. e.g. redirect('/');
+        // return redirect()->route('home');
+    }
+
+    public function googleLogin()
+    {
+        $redirect = Socialite::driver('google')->redirect();
+
+        return $redirect;
+    }
+
+    public function googleLoginCallback()
+    {
+        $user = Socialite::driver('google')->user();
+        
+        dd($user); // laravel dumper
 
         // if ok, redirect to main page. e.g. redirect('/');
         // return redirect()->route('home');
