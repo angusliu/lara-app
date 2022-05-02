@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 // 2022-04-19
 Route::view('/ex/pusher-client', 'examples/pusher-client');
@@ -26,3 +28,6 @@ Route::view('/ex/elem-in-viewport', 'examples/elem-in-viewport');
 Route::view('/ex/google-oauth', 'examples/google-oauth');
 // 2022-04-22
 Route::view('/ex/facebook-oauth', 'examples/facebook-oauth');
+// 2022-05-02
+Route::get('/login/facebook', [LoginController::class, 'fbLogin'])->name('/login/facebook');
+Route::get('/login/facebook/callback', [LoginController::class, 'fbLoginCallback'])->name('/login/facebook/callback');

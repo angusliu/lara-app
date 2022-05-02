@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Taipei',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        // added by me
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -229,6 +232,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // added by me
+        'Socialite' => Laravel\Socialite\SocialiteServiceProvider::class,
 
     ],
 
