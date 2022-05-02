@@ -45,4 +45,21 @@ class LoginController extends Controller
         // if ok, redirect to main page. e.g. redirect('/');
         // return redirect()->route('home');
     }
+
+    public function lineLogin()
+    {
+        $redirect = Socialite::driver('line')->redirect();
+
+        return $redirect;
+    }
+
+    public function lineLoginCallback()
+    {
+        $user = Socialite::driver('line')->user();
+        
+        dd($user); // laravel dumper
+
+        // if ok, redirect to main page. e.g. redirect('/');
+        // return redirect()->route('home');
+    }
 }

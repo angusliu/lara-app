@@ -34,3 +34,6 @@ Route::get('/login/facebook/callback', [LoginController::class, 'facebookLoginCa
 // 2022-05-03
 Route::get('/login/google', [LoginController::class, 'googleLogin']);
 Route::get('/login/google/callback', [LoginController::class, 'googleLoginCallback']);
+// 2022-05-04
+Route::get('/login/line', [LoginController::class, 'lineLogin']);
+Route::get('/login/line/callback', [LoginController::class, 'lineLoginCallback']);

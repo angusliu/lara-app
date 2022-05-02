@@ -163,7 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         // added by me
-        Laravel\Socialite\SocialiteServiceProvider::class,
+        //Laravel\Socialite\SocialiteServiceProvider::class, // remove
+        \SocialiteProviders\Manager\ServiceProvider::class, // add
 
         /*
          * Package Service Providers...

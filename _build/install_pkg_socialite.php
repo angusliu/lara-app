@@ -13,6 +13,7 @@ https://laravel.com/docs/9.x/socialite#introduction
 $cmd_lines = <<<EOD
 cd ../ && composer require laravel/socialite
 cd ../ && composer require socialiteproviders/zoho
+cd ../ && composer require socialiteproviders/line
 EOD;
 
 $cmds = explode("\n", $cmd_lines);
