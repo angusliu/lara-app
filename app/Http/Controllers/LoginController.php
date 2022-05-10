@@ -25,6 +25,8 @@ class LoginController extends Controller
 
         // dd($user); // laravel dumper
 
+        // ref: https://stackoverflow.com/questions/48662087/validation-rule-for-social-login
+
         $user->authFrom = 'facebook';
         session(['login' => $user]);
 
