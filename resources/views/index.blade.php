@@ -14,7 +14,10 @@
 
     <div class="row justify-content-center my-1">
         <div class="col-8 col-sm-6 col-lg-4">
-        Hello, World!
+        Hello, {{ session('login.name') }}!
+        @php
+        dump(session('login'))
+        @endphp
         </div>
     </div>
     

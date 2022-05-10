@@ -23,10 +23,12 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        dd($user); // laravel dumper
+        // dd($user); // laravel dumper
+
+        session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
-        // return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     public function googleLogin()
@@ -40,10 +42,12 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->user();
         
-        dd($user); // laravel dumper
+        // dd($user); // laravel dumper
+
+        session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
-        // return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     public function lineLogin()
@@ -57,9 +61,11 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('line')->user();
         
-        dd($user); // laravel dumper
+        // dd($user); // laravel dumper
+
+        session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
-        // return redirect()->route('home');
+        return redirect()->route('home');
     }
 }
