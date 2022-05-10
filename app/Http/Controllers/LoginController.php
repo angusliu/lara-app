@@ -25,6 +25,7 @@ class LoginController extends Controller
 
         // dd($user); // laravel dumper
 
+        $user->authFrom = 'facebook';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
@@ -44,6 +45,7 @@ class LoginController extends Controller
         
         // dd($user); // laravel dumper
 
+        $user->authFrom = 'google';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
@@ -63,6 +65,7 @@ class LoginController extends Controller
         
         // dd($user); // laravel dumper
 
+        $user->authFrom = 'line';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
