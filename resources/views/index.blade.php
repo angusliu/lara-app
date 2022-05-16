@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <title>Lara-App</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="falcon/assets/css/theme.min.css" rel="stylesheet" id="style-default">
     </head>
     <body>
 
@@ -24,9 +24,9 @@
     {{-- Login with Facebook --}}
     <div class="row justify-content-center my-1">
         <div class="col-8 col-sm-6 col-lg-4">
-            <a class="btn" href="{{ url('login/facebook') }}"
-                style="background: #3B5499; color: WHITE; padding: 5px; width: 100%; text-align: center; border-radius:5px;  display: block;">
-                Facebook 登入
+            <a class="btn btn-falcon-default me-1 mb-1 w-100" type="button" href="{{ url('login/facebook') }}">
+                <img width="32" class="float-start" src="img/logo/facebook.png">
+                <span class="align-middle">Facebook 登入</span>
             </a>
         </div>
     </div>
@@ -34,9 +34,9 @@
     {{-- Login with Google account --}}
     <div class="row justify-content-center my-1">
         <div class="col-8 col-sm-6 col-lg-4">
-            <a class="btn" href="{{ url('login/google') }}"
-                style="background: #FF3333; color: WHITE; padding: 5px; width: 100%; text-align: center; border-radius:5px;  display: block;">
-                Google 帳戶登入
+            <a class="btn btn-falcon-default me-1 mb-1 w-100" type="button" href="{{ url('login/google') }}">
+                <img width="32" class="float-start" src="img/logo/google.png">
+                <span class="align-middle">Google 帳戶登入</span>
             </a>
         </div>
     </div>
@@ -44,17 +44,18 @@
     {{-- Login with LINE account --}}
     <div class="row justify-content-center my-1">
         <div class="col-8 col-sm-6 col-lg-4">
-            <a class="btn" href="{{ url('login/line') }}"
-                style="background: #33AA33; color: WHITE; padding: 5px; width: 100%; text-align: center; border-radius:5px;  display: block;">
-                LINE 帳號登入
+            <a class="btn btn-falcon-default me-1 mb-1 w-100" type="button" href="{{ url('login/line') }}">
+                <img width="32" class="float-start" src="img/logo/line.png">
+                <span class="align-middle">LINE 帳號登入</span>
             </a>
         </div>
     </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="falcon/vendors/popper/popper.min.js"></script>
+    <script src="falcon/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="falcon/assets/js/theme.js"></script>
     <script>
     // fix facebook oauth appended hash "#_=_"
     if (window.location.hash === "#_=_") {
