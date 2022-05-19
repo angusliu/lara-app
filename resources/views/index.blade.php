@@ -23,7 +23,8 @@
         <span class="fw-bold fs-4 d-inline-block">Infohub</span>
         
         @if ( session('login') )
-        <img width="96" class="fit-cover rounded-3 ms-2" src="{{ session('login')->avatar }}" alt="" />
+        <img width="96" class="fit-cover rounded-3 ms-2" src="{{ session('login')->avatar }}" alt=""
+            onclick="new bootstrap.Toast(document.getElementById('toast-debugger')).show();" />
         @endif
     </a>
     </div>
@@ -73,14 +74,25 @@
     </div>
     </div>
     <!-- &card -->
+
+    <!-- toast -->
+    <div class="position-fixed bottom-0 start-0 p-0" style="z-index: 99">
+        <div id="toast-debugger" class="toast w-100" role="alert" data-bs-autohide="false" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Debug</strong><small>login user</small>
+                <button class="ms-2 btn-close" type="button" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body overflow-auto" style="max-height: 50vh;">
+            @php
+            dump(session('login'))
+            @endphp
+            </div>
+        </div>
+    </div>
+    <!-- &toast -->
     
     </div>
     <!-- &col -->
-    <div class="row mt-1">
-    @php
-    dump(session('login'))
-    @endphp
-    </div>
     </div>
     <!-- &row vh-100 -->
     </div>
