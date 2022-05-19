@@ -27,7 +27,7 @@ class LoginController extends Controller
 
         // ref: https://stackoverflow.com/questions/48662087/validation-rule-for-social-login
 
-        $user->driver = 'facebook';
+        $user->provider = 'facebook';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
@@ -47,7 +47,7 @@ class LoginController extends Controller
         
         // dd($user); // laravel dumper
 
-        $user->driver = 'google';
+        $user->provider = 'google';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');
@@ -67,7 +67,7 @@ class LoginController extends Controller
         
         // dd($user); // laravel dumper
 
-        $user->driver = 'line';
+        $user->provider = 'line';
         session(['login' => $user]);
 
         // if ok, redirect to main page. e.g. redirect('/');

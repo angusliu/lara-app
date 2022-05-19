@@ -14,15 +14,18 @@
     <div class="container" data-layout="container">
     <div class="row flex-center min-vh-100 py-6">
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-    <a class="d-flex flex-center mb-4" href="#"><img class="me-2" src="img/logo/infohub-circle.png" alt="" width="64" /><span class="fw-bolder fs-5 d-inline-block">Infohub</span></a>
+
 
     <!-- card -->
     <div class="card">
-    <div class="card-header">
-    Hello, {{ session('login.name') }} from <b>{{ session('login')->driver ?? '' }}</b>!
+    <div class="card-header border-0">
+    <a class="d-flex flex-center mb-1 text-decoration-none" href="javascript:void(0);">
+        <img class="me-2" src="img/logo/infohub-circle.png" alt="" width="64" />
+        <span class="fw-bold fs-5 d-inline-block">Infohub</span>
+    </a>
     </div>
-    <div class="card-body p-2 p-sm-3">
-
+    <div class="card-body px-2 px-sm-3">
+    Hello, {{ session('login.name') }} from <b>{{ session('login')->provider ?? '' }}</b>!
     <div class="position-relative">
     <hr class="bg-300" />
     <div class="divider-content-center">Log in with</div>
