@@ -36,23 +36,23 @@
     <div class="row flex-nowrap justify-content-around">
         <div class="col-auto p-0 border-0">
             {{-- Login with Facebook --}}
-            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/facebook') }}">
-                <img width="48" class="" src="img/logo/facebook.png"><br />
-                <span>Facebook</span>
+            <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/facebook') }}">
+                <img width="32" class="mx-2" src="img/logo/facebook.png"><br />
+                <span class="fs--2">Facebook</span>
             </a>
         </div>
         <div class="col-auto p-0 border-0">
             {{-- Login with Google --}}
-            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/google') }}">
-                <img width="48" class="" src="img/logo/google.png"><br />
-                <span>Google</span>
+            <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/google') }}">
+                <img width="32" class="mx-2" src="img/logo/google.png"><br />
+                <span class="fs--2">Google</span>
             </a>
         </div>
         <div class="col-auto p-0 border-0">
             {{-- Login with LINE --}}
-            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/line') }}">
-                <img width="48" class="" src="img/logo/line.png"><br />
-                <span>LINE</span>
+            <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/line') }}">
+                <img width="32" class="mx-2" src="img/logo/line.png"><br />
+                <span class="fs--2">LINE</span>
             </a>
         </div>
     </div>
