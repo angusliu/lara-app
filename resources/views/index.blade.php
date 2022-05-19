@@ -12,67 +12,75 @@
     </head>
     <body>
     <div class="container" data-layout="container">
-    <div class="row flex-center min-vh-100 py-6">
+    <div class="row flex-center min-vh-100 py-6"> 
     <div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-
 
     <!-- card -->
     <div class="card">
     <div class="card-header border-0">
     <a class="d-flex flex-center mb-1 text-decoration-none" href="javascript:void(0);">
         <img class="me-2" src="img/logo/infohub-circle.png" alt="" width="64" />
-        <span class="fw-bold fs-5 d-inline-block">Infohub</span>
+        <span class="fw-bold fs-4 d-inline-block">Infohub</span>
     </a>
     </div>
     <div class="card-body px-2 px-sm-3">
+    
     Hello, {{ session('login.name') }} from <b>{{ session('login')->provider ?? '' }}</b>!
+
     <div class="position-relative">
     <hr class="bg-300" />
     <div class="divider-content-center">Log in with</div>
     </div>
-    
-    {{-- Login with Facebook --}}
-    <div class="row justify-content-center my-1">
-        <div class="col-12">
-            <a class="btn btn-falcon-default me-1 mb-1 w-100 btn-lg" type="button" href="{{ url('login/facebook') }}">
-                <img width="32" class="float-start" src="img/logo/facebook.png">
-                <span>Facebook 登入</span>
+
+    {{-- Login with 3rd-party --}}
+    <div class="row flex-nowrap justify-content-around">
+        <div class="col-auto p-0 border-0">
+            {{-- Login with Facebook --}}
+            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/facebook') }}">
+                <img width="48" class="" src="img/logo/facebook.png"><br />
+                <span>Facebook</span>
+            </a>
+        </div>
+        <div class="col-auto p-0 border-0">
+            {{-- Login with Google --}}
+            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/google') }}">
+                <img width="48" class="" src="img/logo/google.png"><br />
+                <span>Google</span>
+            </a>
+        </div>
+        <div class="col-auto p-0 border-0">
+            {{-- Login with LINE --}}
+            <a class="btn btn-sm btn-falcon-default" type="button" href="{{ url('login/line') }}">
+                <img width="48" class="" src="img/logo/line.png"><br />
+                <span>LINE</span>
             </a>
         </div>
     </div>
 
-    {{-- Login with Google account --}}
-    <div class="row justify-content-center my-1">
-        <div class="col-12">
-            <a class="btn btn-falcon-default me-1 mb-1 w-100 btn-lg" type="button" href="{{ url('login/google') }}">
-                <img width="32" class="float-start" src="img/logo/google.png">
-                <span>Google 帳戶登入</span>
-            </a>
-        </div>
+    <div class="position-relative">
+    <hr class="bg-300" />
+    <div class="divider-content-center">Or</div>
     </div>
 
-    {{-- Login with LINE account --}}
-    <div class="row justify-content-center my-1">
-        <div class="col-12">
-            <a class="btn btn-falcon-default me-1 mb-1 w-100 btn-lg" type="button" href="{{ url('login/line') }}">
-                <img width="32" class="float-start" src="img/logo/line.png">
-                <span>LINE 帳號登入</span>
-            </a>
-        </div>
-    </div>
+    <input class="form-control mb-2" type="email" placeholder="Email address" />
+    <input class="form-control mb-2" type="password" placeholder="Password" />
+    <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Log in</button>
 
     </div>
     </div>
     <!-- &card -->
     
     </div>
-    </div>
-    <div class="row">
+    <!-- &col -->
+    <div class="row mt-1">
     @php
     dump(session('login'))
     @endphp
     </div>
     </div>
+    <!-- &row vh-100 -->
+    </div>
+    <!-- &container -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="falcon/vendors/anchorjs/anchor.min.js"></script>
