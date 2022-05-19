@@ -37,3 +37,5 @@ Route::get('/login/google/callback', [LoginController::class, 'googleLoginCallba
 // 2022-05-04
 Route::get('/login/line', [LoginController::class, 'lineLogin']);
 Route::get('/login/line/callback', [LoginController::class, 'lineLoginCallback']);
+// 2022-05-19
+Route::view('/privacy-policy', 'privacy-policy');
