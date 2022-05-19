@@ -19,13 +19,17 @@
     <div class="card">
     <div class="card-header border-0">
     <a class="d-flex flex-center mb-1 text-decoration-none" href="javascript:void(0);">
-        <img class="me-2" src="img/logo/infohub-circle.png" alt="" width="64" />
+        <img width="64" class="me-2" src="img/logo/infohub-circle.png" alt="" />
         <span class="fw-bold fs-4 d-inline-block">Infohub</span>
+        
+        @if ( session('login') )
+        <img width="96" class="fit-cover rounded-3 ms-2" src="{{ session('login')->avatar }}" alt="" />
+        @endif
     </a>
     </div>
     <div class="card-body px-2 px-sm-3">
     
-    Hello, {{ session('login.name') }} from <b>{{ session('login')->provider ?? '' }}</b>!
+    Hello, {{ session('login')->name ?? '' }} from <b>{{ session('login')->provider ?? '' }}</b>!
 
     <div class="position-relative">
     <hr class="bg-300" />
