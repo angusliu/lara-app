@@ -19,11 +19,11 @@
     <div class="card">
     <div class="card-header border-0">
     <a class="d-flex flex-center mb-1 text-decoration-none" href="javascript:void(0);">
-        <img width="64" class="me-2" src="img/logo/infohub-circle.png" alt="" />
+        <img width="64" height="64" class="me-2" src="img/logo/infohub-circle.png" alt="" />
         <span class="fw-bold fs-4 d-inline-block">Infohub</span>
         
         @if ( session('login') )
-        <img width="96" class="fit-cover rounded-3 ms-2" src="{{ session('login')->avatar }}" alt=""
+        <img width="96" height="96" class="fit-cover rounded-3 ms-2" src="{{ session('login')->avatar }}" alt=""
             onclick="new bootstrap.Toast(document.getElementById('toast-debugger')).show();" />
         @endif
     </a>
@@ -42,21 +42,21 @@
         <div class="col-auto p-0 border-0">
             {{-- Login with Facebook --}}
             <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/facebook') }}">
-                <img width="32" class="mx-2" src="img/logo/facebook.png"><br />
+                <img width="32" height="32" class="mx-2" src="img/logo/facebook.png"><br />
                 <span class="fs--2">Facebook</span>
             </a>
         </div>
         <div class="col-auto p-0 border-0">
             {{-- Login with Google --}}
             <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/google') }}">
-                <img width="32" class="mx-2" src="img/logo/google.png"><br />
+                <img width="32" height="32" class="mx-2" src="img/logo/google.png"><br />
                 <span class="fs--2">Google</span>
             </a>
         </div>
         <div class="col-auto p-0 border-0">
             {{-- Login with LINE --}}
             <a class="btn btn-sm btn-falcon-default p-2" type="button" href="{{ url('login/line') }}">
-                <img width="32" class="mx-2" src="img/logo/line.png"><br />
+                <img width="32" height="32" class="mx-2" src="img/logo/line.png"><br />
                 <span class="fs--2">LINE</span>
             </a>
         </div>
