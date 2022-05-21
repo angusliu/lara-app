@@ -6,6 +6,14 @@ git config --global core.editor "vim"
 git rebase -i <commit>
 git push --force-with-lease
 
+# 復原某個 commit 用 `git revert` (某種程度上跟 `git cherry-pick` 相反) 
+https://stackoverflow.com/questions/2318777/undo-a-particular-commit-in-git-thats-been-pushed-to-remote-repos
+
+# 有些 git command 後面可以加目錄，縮限範圍，很好用。如:
+git status .
+git diff .
+git add .
+
 # issue
 remote: Internal Server Error
 To github.com:angusliu/lara-app.git
