@@ -698,6 +698,48 @@ var choicesInit = function choicesInit() {
       var choices = new window.Choices(item, _objectSpread({
         itemSelectText: ''
       }, userOptions));
+      var needsValidation = document.querySelectorAll('.needs-validation');
+      needsValidation.forEach(function (validationItem) {
+        var selectFormValidation = function selectFormValidation() {
+          validationItem.querySelectorAll('.choices').forEach(function (choicesItem) {
+            var singleSelect = choicesItem.querySelector('.choices__list--single');
+            var multipleSelect = choicesItem.querySelector('.choices__list--multiple');
+
+            if (choicesItem.querySelector('[required]')) {
+              if (singleSelect) {
+                var _singleSelect$querySe;
+
+                if (((_singleSelect$querySe = singleSelect.querySelector('.choices__item--selectable')) === null || _singleSelect$querySe === void 0 ? void 0 : _singleSelect$querySe.getAttribute('data-value')) !== '') {
+                  choicesItem.classList.remove('invalid');
+                  choicesItem.classList.add('valid');
+                } else {
+                  choicesItem.classList.remove('valid');
+                  choicesItem.classList.add('invalid');
+                }
+              } //----- for multiple select only ----------
+
+
+              if (multipleSelect) {
+                if (choicesItem.getElementsByTagName('option').length) {
+                  choicesItem.classList.remove('invalid');
+                  choicesItem.classList.add('valid');
+                } else {
+                  choicesItem.classList.remove('valid');
+                  choicesItem.classList.add('invalid');
+                }
+              } //------ select end ---------------
+
+            }
+          });
+        };
+
+        validationItem.addEventListener('submit', function () {
+          selectFormValidation();
+        });
+        item.addEventListener('change', function () {
+          selectFormValidation();
+        });
+      });
       return choices;
     });
   }
@@ -3314,6 +3356,7 @@ var listInit = function listInit() {
         var viewAll = el.querySelector('[data-list-view="*"]');
         var viewLess = el.querySelector('[data-list-view="less"]');
         var listInfo = el.querySelector('[data-list-info]');
+        var listFilter = document.querySelector('[data-list-filter]');
         var list = new window.List(el, options); //-------fallback-----------
 
         list.on('updated', function (item) {
@@ -3408,6 +3451,18 @@ var listInit = function listInit() {
               pageCount = Number(e.target.innerText);
               updateListControls();
             }
+          });
+        }
+
+        if (options.filter) {
+          listFilter.addEventListener('change', function (e) {
+            list.filter(function (item) {
+              if (e.target.value === '') {
+                return true;
+              }
+
+              return item.values().payment.toLowerCase().includes(e.target.value.toLowerCase());
+            });
           });
         }
       });
